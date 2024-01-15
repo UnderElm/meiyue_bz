@@ -19,6 +19,8 @@ def get_download_url(url):
     html = requests.get(url).text[1:-1]
     result = json.loads(html)
     mp3 = result['data']['hqurl']
+    if not mp3:
+        mp3 = result['data']['lqurl']
     return mp3
 
 # 抓取网页的通用框架,获取页面的内容
